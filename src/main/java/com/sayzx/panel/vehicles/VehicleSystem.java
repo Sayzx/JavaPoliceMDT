@@ -1,0 +1,82 @@
+package com.sayzx.panel.vehicles;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
+public class VehicleSystem {
+    private static List<Vehicle> vehicles = new ArrayList<>();
+    private static final String JSON_FILE_PATH = "src/main/java/com/sayzx/panel/vehicles/vehicles.json";
+    private static final Gson gson = new GsonBuilder().create();
+
+    public VehicleSystem() {
+        loadVehiclesFromJson();
+    }
+
+    public static boolean vehicleExists(String plate) {
+        return vehicles.stream().anyMatch(v -> v.getPlate().equals(plate));
+    }
+
+    public static void addVehicleToJson(int id, String make, String model, String plate, int year) {
+        loadVehiclesFromJson(); // Ensure existing vehicles are loaded
+        Vehicle newVehicle = new Vehicle(id, make, model, plate, year);
+        vehicles.add(newVehicle);
+        saveVehiclesToJson();
+        System.out.println("Vehicle added successfully: " + make + " " + model + " with plate " + plate);
+    }
+
+    public static void loadVehiclesFromJson() {
+        try (FileReader reader = new FileReader(JSON_FILE_PATH)) {
+            Type listType = new TypeToken<ArrayList<Vehicle>>() {}.getType();
+            vehicles = gson.fromJson(reader, listType);
+            if (vehicles == null) {
+                vehicles = new ArrayList<>();
+            }
+        } catch (IOException e) {
+            System.out.println("Error loading vehicles from JSON file.");
+            vehicles = new ArrayList<>();
+        }
+    }
+
+    private static void saveVehiclesToJson() {
+        try (FileWriter writer = new FileWriter(JSON_FILE_PATH)) {
+            gson.toJson(vehicles, writer);
+        } catch (IOException e) {
+            System.out.println("Error saving vehicles to JSON file.");
+        }
+    }
+
+    public static List<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public static void getVehicleById(int id) {
+        loadVehiclesFromJson(); // Load the latest data from JSON
+        Vehicle vehicle = vehicles.stream().filter(v -> v.getId() == id).findFirst().orElse(null);
+        if (vehicle != null) {
+            System.out.println(vehicle.getDetails());
+        } else {
+            System.out.println("Vehicle not found.");
+        }
+    }
+
+    public static void showAllVehicles() {
+        loadVehiclesFromJson(); // Load the latest data from JSON
+        if (vehicles.isEmpty()) {
+            System.out.println("No vehicles found.");
+        } else {
+            for (Vehicle vehicle : vehicles) {
+                System.out.println(vehicle.getDetails());
+            }
+        }
+    }
+
+
+}

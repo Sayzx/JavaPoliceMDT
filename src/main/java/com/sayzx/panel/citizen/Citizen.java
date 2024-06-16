@@ -1,44 +1,48 @@
 package com.sayzx.panel.citizen;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Citizen extends Person {
     private String address;
 
     /**
      *
-     * @param id
-     * @param firstName
-     * @param lastName
-     * @param age
-     * @param birthDate
-     * @param birthPlace
-     * @param address
+     * @param id Citizen ID
+     * @param firstName Citizen First Name
+     * @param lastName Citizen Last Name
+     * @param birthDate Citizen Birth Date;
+     * @param birthPlace Citizen BirthPlace
+     * @param address Citizen Address
      */
-    public Citizen(int id, String firstName, String lastName, int age, Date birthDate, String birthPlace, String address) {
-        super(id, firstName, lastName, age, birthDate, birthPlace);
+    public Citizen(int id, String firstName, String lastName, LocalDate birthDate, String birthPlace, String address) {
+        super(id, firstName, lastName, birthDate, birthPlace);
         this.address = address;
     }
+
 
     @Override
-    public String getDetails() {
-        return "Citizen [ID=" + id + ", FirstName=" + firstName + ", LastName=" + lastName + ", Age=" + age +
-                ", BirthDate=" + birthDate + ", BirthPlace=" + birthPlace + ", Address=" + address + "]";
+    public String toString() {
+        return String.format(
+                "----------CITIZENS------------" +
+                "Citizen Details:\n" +
+                        "ID:          %d\n" +
+                        "First Name:  %s\n" +
+                        "Last Name:   %s\n" +
+                        "Birth Date:  %s\n" +
+                        "Birth Place: %s\n" +
+                        "Address:     %s\n" ,
+                id, firstName, lastName, birthDate, birthPlace, address
+        );
+    }
+    public int getId() {
+        return id;
     }
 
-
-    /**
-     * @return
-     */
-    public String getAddress() {
-        return address;
+    public Object getFirstName() {
+        return firstName;
     }
 
-
-    /**
-     * @param address
-     */
-    public void setAddress(String address) {
-        this.address = address;
+    public Object getLastName() {
+        return lastName;
     }
 }

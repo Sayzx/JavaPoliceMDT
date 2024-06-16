@@ -1,12 +1,15 @@
 package com.sayzx.panel.vehicles;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.StringJoiner;
+
 public class Vehicle {
     private int id;
     private String make;
     private String model;
     private String plate;
     private int year;
-
 
     /**
      * @param id
@@ -23,52 +26,24 @@ public class Vehicle {
         this.year = year;
     }
 
-
     /**
-     * @return
+     * @return details in tabular format
      */
     public String getDetails() {
-        return "Vehicle [ID=" + id + ", Make=" + make + ", Model=" + model + ", Plate=" + plate + ", Year=" + year + "]";
+        return String.format(
+                "----------VEHICLE #%d ------------\n" +
+                        "%-10s %-15s %-15s %-10s %-5s\n" +
+                        "%-10d %-15s %-15s %-10s %-5d",
+                id, "ID", "Make", "Model", "Plate", "Year",
+                id, make, model, plate, year);
     }
 
-    // Getters et setters
+    // Getters and setters
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getMake() {
-        return make;
-    }
-
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
     public String getPlate() {
         return plate;
-    }
-
-    public void setPlate(String plate) {
-        this.plate = plate;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
     }
 }
