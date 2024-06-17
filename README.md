@@ -7,7 +7,7 @@ This project is a Java application that manages accounts, citizens, vehicles, an
 
 ## Features
 
-- **Account Management**: Create, login, and logout accounts.
+- **Account Management**: Create, log in, and log out of accounts.
 - **Citizen Management**: Add and view citizen details.
 - **Vehicle Management**: Add and view vehicle details.
 - **Criminal Record Management**: Add and view criminal records associated with citizens.
@@ -19,7 +19,7 @@ This project is a Java application that manages accounts, citizens, vehicles, an
 
 ## Dependencies
 
-The project uses the following dependencies:
+The project uses the following dependency:
 
 - **Gson**: For JSON serialization and deserialization.
 
@@ -34,7 +34,7 @@ The project uses the following dependencies:
 
 2. **Set up the project with Maven**:
 
-   Make sure you have Maven installed. You can check by running:
+   Ensure you have Maven installed. You can check by running:
 
    ```sh
    mvn -v
@@ -45,15 +45,21 @@ The project uses the following dependencies:
 3. **Add dependencies to your `pom.xml` file**:
 
    ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
    <project xmlns="http://maven.apache.org/POM/4.0.0"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
        <modelVersion>4.0.0</modelVersion>
 
-       <groupId>com.sayzx.panel</groupId>
-       <artifactId>PanelManager</artifactId>
+       <groupId>org.example</groupId>
+       <artifactId>PoliceManager</artifactId>
        <version>1.0-SNAPSHOT</version>
 
+       <properties>
+           <maven.compiler.source>21</maven.compiler.source>
+           <maven.compiler.target>21</maven.compiler.target>
+           <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+       </properties>
        <dependencies>
            <dependency>
                <groupId>com.google.code.gson</groupId>
@@ -61,20 +67,6 @@ The project uses the following dependencies:
                <version>2.8.9</version>
            </dependency>
        </dependencies>
-
-       <build>
-           <plugins>
-               <plugin>
-                   <groupId>org.apache.maven.plugins</groupId>
-                   <artifactId>maven-compiler-plugin</artifactId>
-                   <version>3.8.1</version>
-                   <configuration>
-                       <source>1.8</source>
-                       <target>1.8</target>
-                   </configuration>
-               </plugin>
-           </plugins>
-       </build>
    </project>
    ```
 
@@ -95,7 +87,7 @@ The project uses the following dependencies:
 2. **Run the application**:
 
    ```sh
-   java -cp PanelManager-1.0-SNAPSHOT.jar com.sayzx.panel.mdt.Program
+   java -cp PoliceManager-1.0-SNAPSHOT.jar org.example.Program
    ```
 
 ## Usage
@@ -132,7 +124,7 @@ Select an option:
 
 ### Infraction Management
 
-1. **Add Infraction on citizen**: Add a new infraction to a citizen's record.
+1. **Add Infraction on Citizen**: Add a new infraction to a citizen's record.
 2. **View All Infractions**: View details of all infractions.
 3. **View Infractions by Citizen ID**: View details of infractions by citizen ID.
 
