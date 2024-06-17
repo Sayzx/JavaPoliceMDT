@@ -1,9 +1,9 @@
 package com.sayzx.panel.locker;
 
 public class CriminalRecord {
-    private int id;
+    private final int id;
     private String details;
-    private int userId;
+    private final int userId;
 
     /**
      * Constructeur de la classe CriminalRecord.
@@ -35,13 +35,19 @@ public class CriminalRecord {
      */
     public String toString() {
         return String.format(
-                "\n----------CRIMINAL RECORD ID: %d------------\n" +
-                        "UserID:   %d\n" +
-                        "Details: %s\n" +
-                        "-------------------------------------------",
+                """
+
+                        ----------CRIMINAL RECORD ID: %d------------
+                        UserID:   %d
+                        Details: %s
+                        -------------------------------------------""",
                 id, userId, details);
     }
     public int getUserId() {
         return userId;
+    }
+
+    public int getId() {
+        return id;
     }
 }

@@ -95,12 +95,14 @@ public class Program {
         System.out.println("[1] Add Infraction on citizen (If citizen not created, it is not possible to add infraction)");
         System.out.println("[2] View All Infractions");
         System.out.println("[3] View Infractions by Citizen ID");
+        System.out.println("[4] Remove Infraction( By ID In Infraction )");
+        System.out.println("[5] Remove All Infractions( By ID In Citizen )");
 
         int choice;
         while (true) {
             try {
                 choice = Integer.parseInt(scanner.nextLine());
-                if (choice >= 1 && choice <= 3) {
+                if (choice >= 1 && choice <= 5) {
                     break;
                 } else {
                     System.out.println("Invalid choice. Please enter a number between 1 and 3.");
@@ -119,6 +121,12 @@ public class Program {
                 break;
             case 3:
                 viewInfractionsByCitizenId();
+                break;
+            case 4:
+                removeRecordById();
+                break;
+            case 5:
+                removeAllRecordsByCitizenId();
                 break;
         }
     }
@@ -150,6 +158,18 @@ public class Program {
         System.out.println("Enter citizen ID:");
         int citizenId = Integer.parseInt(scanner.nextLine());
         this.getCriminalRecordSystem().getRecordByUserId(citizenId);
+    }
+
+    private void removeRecordById() {
+        System.out.println("Enter record ID:");
+        int recordId = Integer.parseInt(scanner.nextLine());
+        this.getCriminalRecordSystem().removeRecordById(recordId);
+    }
+
+    private void removeAllRecordsByCitizenId() {
+        System.out.println("Enter citizen ID:");
+        int citizenId = Integer.parseInt(scanner.nextLine());
+        this.getCriminalRecordSystem().removeAllRecordsByCitizenId(citizenId);
     }
 
     private void manageAccounts() {
@@ -232,7 +252,7 @@ public class Program {
                 if (choice >= 1 && choice <= 4) {
                     break;
                 } else {
-                    System.out.println("Invalid choice. Please enter a number between 1 and 2.");
+                    System.out.println("Invalid choice. Please enter a number between 1 and 4.");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a valid integer.");
@@ -309,15 +329,16 @@ public class Program {
         System.out.println("[1] Add Vehicle");
         System.out.println("[2] View All Vehicles");
         System.out.println("[3] View Vehicle Details by ID");
+        System.out.println("[4] Remove Vehicle( By ID )");
 
         int choice;
         while (true) {
             try {
                 choice = Integer.parseInt(scanner.nextLine());
-                if (choice >= 1 && choice <= 3) {
+                if (choice >= 1 && choice <= 4) {
                     break;
                 } else {
-                    System.out.println("Invalid choice. Please enter a number between 1 and 3.");
+                    System.out.println("Invalid choice. Please enter a number between 1 and 4.");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a valid integer.");
@@ -330,12 +351,17 @@ public class Program {
                 break;
             case 2:
                 System.out.println("Showing all vehicles:");
-                this.vehicleSystem.showAllVehicles();
+                this.getVehicleSystem().showAllVehicles();
                 break;
             case 3:
                 System.out.println("Enter vehicle ID:");
                 int idVehicle = Integer.parseInt(scanner.nextLine());
-                this.vehicleSystem.getVehicleById(idVehicle);
+                this.getVehicleSystem().getVehicleById(idVehicle);
+                break;
+            case 4:
+                System.out.println("Enter vehicle ID:");
+                int idVehicleToRemove = Integer.parseInt(scanner.nextLine());
+                this.getVehicleSystem().removeVehicleById(idVehicleToRemove);
                 break;
         }
     }

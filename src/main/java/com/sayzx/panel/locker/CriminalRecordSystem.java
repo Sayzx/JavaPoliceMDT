@@ -111,4 +111,28 @@ public class CriminalRecordSystem {
         loadRecordsFromJson(); // Load the latest data from JSON
         records.forEach(record -> System.out.println(record));
     }
+
+    public void removeRecordById(int recordId) {
+        loadRecordsFromJson(); // Load the latest data from JSON
+        CriminalRecord recordToRemove = records.stream().filter(r -> r.getId() == recordId).findFirst().orElse(null);
+        if (recordToRemove != null) {
+            records.remove(recordToRemove);
+            saveRecordsToJson();
+            System.out.println("Record removed successfully for user ID: " + recordToRemove.getUserId());
+        } else {
+            System.out.println("Record not found.");
+        }
+    }
+
+    public void removeAllRecordsByCitizenId(int citizenId) {
+        loadRecordsFromJson(); // Load the latest data from JSON
+        List<CriminalRecord> recordsToRemove = records.stream().filter(r -> r.getUserId() == citizenId).toList();
+        if (recordsToRemove.isEmpty()) {
+            System.out.println("No records found for citizen ID: " + citizenId);
+        } else {
+            records.removeAll(recordsToRemove);
+            saveRecordsToJson();
+            System.out.println("Records removed successfully for citizen ID: " + citizenId);
+        }
+    }
 }

@@ -79,4 +79,15 @@ public class VehicleSystem {
     }
 
 
+    public void removeVehicleById(int idVehicleToRemove) {
+        loadVehiclesFromJson(); // Load the latest data from JSON
+        Vehicle vehicleToRemove = vehicles.stream().filter(v -> v.getId() == idVehicleToRemove).findFirst().orElse(null);
+        if (vehicleToRemove != null) {
+            vehicles.remove(vehicleToRemove);
+            saveVehiclesToJson();
+            System.out.println("Vehicle removed successfully: " + vehicleToRemove.getMake() + " " + vehicleToRemove.getModel() + " with plate " + vehicleToRemove.getPlate());
+        } else {
+            System.out.println("Vehicle not found.");
+        }
+    }
 }
