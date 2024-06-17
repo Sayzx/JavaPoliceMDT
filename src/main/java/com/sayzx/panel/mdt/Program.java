@@ -12,12 +12,38 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Program {
-    private static final SysSystem system = new SysSystem();
-    private static boolean isLoggedIn = false;
-    private static final Scanner scanner = new Scanner(System.in);
 
-    public static void start() {
+    private final SysSystem sysSystem = new SysSystem(this);
+
+    private final CitizensSystem citizensSystem = new CitizensSystem();
+
+    private final VehicleSystem vehicleSystem = new VehicleSystem();
+
+    private final CriminalRecordSystem criminalRecordSystem = new CriminalRecordSystem();
+
+    private boolean isLoggedIn = false;
+
+    private final Scanner scanner = new Scanner(System.in);
+
+    public SysSystem getSysSystem() {
+        return sysSystem;
+    }
+
+    public CitizensSystem getCitizensSystem() {
+        return citizensSystem;
+    }
+
+    public VehicleSystem getVehicleSystem() {
+        return vehicleSystem;
+    }
+
+    public CriminalRecordSystem getCriminalRecordSystem() {
+        return criminalRecordSystem;
+    }
+
+    public void start() {
         int choice;
+
         do {
             System.out.println("Select an option:");
             System.out.println("[1] Account Management");
@@ -59,7 +85,7 @@ public class Program {
         } while (choice != 0);
     }
 
-    private static void infractionsManagement() {
+    private void infractionsManagement() {
         if (!isLoggedIn) {
             System.out.println("You must be logged in to manage infractions.");
             return;
@@ -97,10 +123,10 @@ public class Program {
         }
     }
 
-    private static void addInfraction() {
+    private void addInfraction() {
         System.out.println("Enter citizen ID:");
         int idCitizen = Integer.parseInt(scanner.nextLine());
-        Citizen citizen = CitizensSystem.getCitizenById(idCitizen);
+        Citizen citizen = this.getCitizensSystem().getCitizenById(idCitizen);
 
         if (citizen == null) {
             System.out.println("Citizen not found. Cannot add infraction.");
@@ -110,23 +136,23 @@ public class Program {
         System.out.println("Enter infraction details:");
         String infractionDetails = scanner.nextLine();
 
-        int recordId = CriminalRecordSystem.getRecords().size() + 1;
-        CriminalRecordSystem.addRecordToJson(recordId, idCitizen, infractionDetails);
+        int recordId = this.getCriminalRecordSystem().getRecords().size() + 1;
+        this.getCriminalRecordSystem().addRecordToJson(recordId, idCitizen, infractionDetails);
 
         System.out.println("Infraction added successfully.");
     }
 
-    private static void viewAllInfractions() {
-        CriminalRecordSystem.showAllRecords();
+    private void viewAllInfractions() {
+        this.getCriminalRecordSystem().showAllRecords();
     }
 
-    private static void viewInfractionsByCitizenId() {
+    private void viewInfractionsByCitizenId() {
         System.out.println("Enter citizen ID:");
         int citizenId = Integer.parseInt(scanner.nextLine());
-        CriminalRecordSystem.getRecordByUserId(citizenId);
+        this.getCriminalRecordSystem().getRecordByUserId(citizenId);
     }
 
-    private static void manageAccounts() {
+    private void manageAccounts() {
         System.out.println("Account Management:");
         System.out.println("[1] Create Account");
         System.out.println("[2] Login");
@@ -152,14 +178,14 @@ public class Program {
                 String username = scanner.nextLine();
                 System.out.println("Enter password:");
                 String password = scanner.nextLine();
-                system.createAccount(username, password);
+                sysSystem.createAccount(username, password);
                 break;
             case 2:
                 System.out.println("Enter username:");
                 String loginUsername = scanner.nextLine();
                 System.out.println("Enter password:");
                 String loginPassword = scanner.nextLine();
-                if (Account.login(loginUsername, loginPassword)) {
+                if (isLoggedIn(loginUsername, loginPassword)) {
                     isLoggedIn = true;
                     System.out.println("Login successful!");
                 } else {
@@ -168,7 +194,7 @@ public class Program {
                 break;
             case 3:
                 if (isLoggedIn) {
-                    system.logout();
+                    sysSystem.logout();
                     isLoggedIn = false;
                     System.out.println("Logout successful!");
                 } else {
@@ -178,7 +204,16 @@ public class Program {
         }
     }
 
-    private static void manageCitizens() {
+    private boolean isLoggedIn(String username, String password) {
+        for (Account account : this.getSysSystem().getAccounts()) {
+            if (account.getUsername().equals(username) && account.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void manageCitizens() {
         if (!isLoggedIn) {
             System.out.println("You must be logged in to manage citizens.");
             return;
@@ -187,12 +222,14 @@ public class Program {
         System.out.println("Citizen Management:");
         System.out.println("[1] Add Citizen");
         System.out.println("[2] View Citizen Details");
+        System.out.println("[3] View All Citizens");
+        System.out.println("[4] Remove Citizen( By ID )");
 
         int choice;
         while (true) {
             try {
                 choice = Integer.parseInt(scanner.nextLine());
-                if (choice >= 1 && choice <= 2) {
+                if (choice >= 1 && choice <= 4) {
                     break;
                 } else {
                     System.out.println("Invalid choice. Please enter a number between 1 and 2.");
@@ -209,16 +246,24 @@ public class Program {
             case 2:
                 viewCitizenById();
                 break;
+            case 3:
+                this.getCitizensSystem().showAllCitizens();
+                break;
+            case 4:
+                System.out.println("Enter citizen ID:");
+                int idCitizen = Integer.parseInt(scanner.nextLine());
+                this.getCitizensSystem().removeCitizenById(idCitizen);
+                break;
         }
     }
 
-    private static void addCitizen() {
+    private void addCitizen() {
         System.out.println("Enter first name:");
         String firstName = scanner.nextLine();
         System.out.println("Enter last name:");
         String lastName = scanner.nextLine();
 
-        while (CitizensSystem.citizenExists(firstName, lastName)) {
+        while (this.getCitizensSystem().citizenExists(firstName, lastName)) {
             System.out.println("Citizen with the same first name and last name already exists. Please enter a different first name:");
             firstName = scanner.nextLine();
             System.out.println("Please enter a different last name:");
@@ -243,18 +288,18 @@ public class Program {
         String birthPlace = scanner.nextLine();
         System.out.println("Enter address:");
         String address = scanner.nextLine();
-        int id = CitizensSystem.getCitizens().size() + 1;
-        CitizensSystem.addCitizenToJson(id, firstName, lastName, dob, birthPlace, address);
+        int id = this.getCitizensSystem().getCitizens().size() + 1;
+        this.getCitizensSystem().addCitizenToJson(id, firstName, lastName, dob, birthPlace, address);
         System.out.println("Citizen added: " + firstName + " " + lastName);
     }
 
-    private static void viewCitizenById() {
+    private void viewCitizenById() {
         System.out.println("Enter citizen ID:");
         int idCitizen = Integer.parseInt(scanner.nextLine());
-        CitizensSystem.getCitizenById(idCitizen);
+        this.getCitizensSystem().getCitizenById(idCitizen);
     }
 
-    private static void manageVehicles() {
+    private void manageVehicles() {
         if (!isLoggedIn) {
             System.out.println("You must be logged in to manage vehicles.");
             return;
@@ -285,18 +330,18 @@ public class Program {
                 break;
             case 2:
                 System.out.println("Showing all vehicles:");
-                VehicleSystem.showAllVehicles();
+                this.vehicleSystem.showAllVehicles();
                 break;
             case 3:
                 System.out.println("Enter vehicle ID:");
                 int idVehicle = Integer.parseInt(scanner.nextLine());
-                VehicleSystem.getVehicleById(idVehicle);
+                this.vehicleSystem.getVehicleById(idVehicle);
                 break;
         }
     }
 
-    private static void addVehicle() {
-        int vehicleId = VehicleSystem.getVehicles().size() + 1;
+    private void addVehicle() {
+        int vehicleId = this.getVehicleSystem().getVehicles().size() + 1;
         System.out.println("Enter make:");
         String make = scanner.nextLine();
         // Validate that make is a string
@@ -314,7 +359,7 @@ public class Program {
         System.out.println("Enter license plate:");
         String plate = scanner.nextLine();
         // Validate that the plate is unique and not too long
-        while (VehicleSystem.vehicleExists(plate) || plate.length() > 7) {
+        while (this.getVehicleSystem().vehicleExists(plate) || plate.length() > 7) {
             System.out.println("Vehicle with the same plate already exists or plate is too long. Please enter a different plate:");
             plate = scanner.nextLine();
         }
@@ -334,7 +379,7 @@ public class Program {
                 System.out.println("Invalid input. Please enter a valid year:");
             }
         }
-        VehicleSystem.addVehicleToJson(vehicleId, make, model, plate, year);
+        this.getVehicleSystem().addVehicleToJson(vehicleId, make, model, plate, year);
         System.out.println("Vehicle added: " + make + " " + model);
     }
 }

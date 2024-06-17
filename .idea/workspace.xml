@@ -4,34 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b36cb7b4-7fb4-4bea-8ff3-3012730312f0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/google_code_gson.xml" beforeDir="false" />
+    <list default="true" id="f1b28347-a9dd-4bab-84a8-ce27def28835" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaPoliceMDT.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/accountsystem/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/accountsystem/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/accountsystem/SysSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/accountsystem/SysSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/accountsystem/data/accounts.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/accountsystem/data/accounts.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/citizen/Citizen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/citizen/Citizen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/citizen/CitizensSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/citizen/CitizensSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/citizen/LocalDateAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/citizen/LocalDateAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/citizen/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/citizen/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/citizen/citizens.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/citizen/citizens.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/locker/CriminalRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/locker/CriminalRecord.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/locker/CriminalRecordSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/locker/CriminalRecordSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/locker/criminal_records.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/locker/criminal_records.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/mdt/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/mdt/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/vehicles/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/vehicles/Vehicle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/vehicles/VehicleSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sayzx/panel/vehicles/VehicleSystem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,20 +26,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
+  &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="2hxfOBo6UEid83Rh0BtUxpoQhPF" />
+  <component name="ProjectId" id="2i0SzHBdBQ6PpAJo8ScejuhZvZE" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -60,45 +40,76 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;Maven.PoliceManager [deploy].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.PoliceManager [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.PoliceManager [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.PoliceManager [site].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.PoliceManager [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.PoliceManager.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/aylan/Desktop/Ynov/JavaPoliceMDT&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;web.server&quot;,
+    &quot;settings.editor.splitter.proportion&quot;: &quot;0.24745418&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\boucl\IdeaProjects\JavaPoliceMDT" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="projet-backend-java" />
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sayzx.panel.Main" />
+      <module name="PoliceManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sayzx.panel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="projet-backend-java" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="PoliceManager" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Maven.PoliceManager" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -111,16 +122,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b36cb7b4-7fb4-4bea-8ff3-3012730312f0" name="Changes" comment="" />
-      <created>1718540615147</created>
+      <changelist id="f1b28347-a9dd-4bab-84a8-ce27def28835" name="Changes" comment="" />
+      <created>1718626261259</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1718540615147</updated>
-      <workItem from="1718540616172" duration="6068000" />
-      <workItem from="1718619416673" duration="72000" />
-      <workItem from="1718624403975" duration="26000" />
-      <workItem from="1718624757329" duration="97000" />
-      <workItem from="1718624862677" duration="78000" />
+      <updated>1718626261259</updated>
+      <workItem from="1718626262473" duration="1316000" />
     </task>
     <servers />
   </component>

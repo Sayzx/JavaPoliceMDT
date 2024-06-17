@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class LocalDateAdapter extends TypeAdapter<LocalDate> {
+
     @Override
     public void write(JsonWriter jsonWriter, LocalDate localDate) throws IOException {
         jsonWriter.value(localDate.format(DateTimeFormatter.ISO_LOCAL_DATE));

@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CriminalRecordSystem {
-    private static List<CriminalRecord> records = new ArrayList<>();
-    private static final String JSON_FILE_PATH = "src/main/java/com/sayzx/panel/locker/criminal_records.json";
-    private static final Gson gson = new GsonBuilder().create();
+    private List<CriminalRecord> records = new ArrayList<>();
+    private final String JSON_FILE_PATH = "src/main/java/com/sayzx/panel/locker/criminal_records.json";
+    private final Gson gson = new GsonBuilder().create();
 
     public CriminalRecordSystem() {
         loadRecordsFromJson();
@@ -26,7 +26,7 @@ public class CriminalRecordSystem {
      * @param userId
      * @return
      */
-    public static boolean recordExists(int userId) {
+    public boolean recordExists(int userId) {
         return records.stream().anyMatch(r -> r.getUserId() == userId);
     }
 
@@ -37,7 +37,7 @@ public class CriminalRecordSystem {
      * @param userId The user ID associated with this record.
      * @param details The details of the new record.
      */
-    public static void addRecordToJson(int id, int userId, String details) {
+    public void addRecordToJson(int id, int userId, String details) {
         loadRecordsFromJson(); // Ensure existing records are loaded
         CriminalRecord record = records.stream()
                 .filter(cr -> cr.getUserId() == userId)
@@ -56,7 +56,7 @@ public class CriminalRecordSystem {
     /**
      * Load records from JSON file.
      */
-    public static void loadRecordsFromJson() {
+    public void loadRecordsFromJson() {
         try (FileReader reader = new FileReader(JSON_FILE_PATH)) {
             Type listType = new TypeToken<ArrayList<CriminalRecord>>() {}.getType();
             records = gson.fromJson(reader, listType);
@@ -73,7 +73,7 @@ public class CriminalRecordSystem {
     /**
      * Save records to JSON file.
      */
-    private static void saveRecordsToJson() {
+    private void saveRecordsToJson() {
         try (FileWriter writer = new FileWriter(JSON_FILE_PATH)) {
             gson.toJson(records, writer);
         } catch (IOException e) {
@@ -85,7 +85,7 @@ public class CriminalRecordSystem {
         * Get all records in the system.
      * @return
      */
-    public static List<CriminalRecord> getRecords() {
+    public List<CriminalRecord> getRecords() {
         return records;
     }
 
@@ -93,7 +93,7 @@ public class CriminalRecordSystem {
      * Get a record by user ID.
      * @param userId The user ID to search for.
      */
-    public static void getRecordByUserId(int userId) {
+    public void getRecordByUserId(int userId) {
         loadRecordsFromJson(); // Load the latest data from JSON
         CriminalRecord record = records.stream().filter(r -> r.getUserId() == userId).findFirst().orElse(null);
         if (record != null) {
@@ -107,7 +107,7 @@ public class CriminalRecordSystem {
     /**
      * Show all records in the system.
      */
-    public static void showAllRecords() {
+    public void showAllRecords() {
         loadRecordsFromJson(); // Load the latest data from JSON
         records.forEach(record -> System.out.println(record));
     }

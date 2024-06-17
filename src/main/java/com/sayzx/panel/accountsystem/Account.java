@@ -1,13 +1,17 @@
 package com.sayzx.panel.accountsystem;
 
 
+import com.sayzx.panel.mdt.Program;
+
 /**
  * Classe représentant un compte utilisateur.
  */
 
 public class Account {
-    private String username;
-    private String password;
+
+    private final String username;
+
+    private final String password;
 
     public Account(String username, String password) {
         this.username = username;
@@ -22,18 +26,4 @@ public class Account {
         return password;
     }
 
-    /**
-     * @param username
-     * @param password
-     * @return
-     */
-
-    public static boolean login(String username, String password) {
-        for (Account account : SysSystem.getAccounts()) {
-            if (account.getUsername().equals(username) && account.getPassword().equals(password)) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

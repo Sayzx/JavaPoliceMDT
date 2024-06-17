@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CitizensSystem {
-    private static List<Citizen> citizens = new ArrayList<>();
-    private static final String JSON_FILE_PATH = "src/main/java/com/sayzx/panel/citizen/citizens.json";
-    private static final Gson gson = new GsonBuilder()
+    private List<Citizen> citizens = new ArrayList<>();
+    private final String JSON_FILE_PATH = "src/main/java/com/sayzx/panel/citizen/citizens.json";
+    private final Gson gson = new GsonBuilder()
             .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
             .create();
 
@@ -23,11 +23,11 @@ public class CitizensSystem {
         loadCitizensFromJson();
     }
 
-    public static boolean citizenExists(String firstName, String lastName) {
+    public boolean citizenExists(String firstName, String lastName) {
         return citizens.stream().anyMatch(c -> c.getFirstName().equals(firstName) && c.getLastName().equals(lastName));
     }
 
-    public static void addCitizenToJson(int id, String firstName, String lastName, LocalDate birthDate, String birthPlace, String address) {
+    public void addCitizenToJson(int id, String firstName, String lastName, LocalDate birthDate, String birthPlace, String address) {
         loadCitizensFromJson(); // Ensure existing citizens are loaded
         Citizen newCitizen = new Citizen(id, firstName, lastName, birthDate, birthPlace, address);
         citizens.add(newCitizen);
@@ -35,7 +35,7 @@ public class CitizensSystem {
         System.out.println("Citizen added successfully: " + firstName + " " + lastName);
     }
 
-    public static void loadCitizensFromJson() {
+    public void loadCitizensFromJson() {
         try (FileReader reader = new FileReader(JSON_FILE_PATH)) {
             Type listType = new TypeToken<ArrayList<Citizen>>() {}.getType();
             citizens = gson.fromJson(reader, listType);
@@ -48,7 +48,7 @@ public class CitizensSystem {
         }
     }
 
-    private static void saveCitizensToJson() {
+    private void saveCitizensToJson() {
         try (FileWriter writer = new FileWriter(JSON_FILE_PATH)) {
             gson.toJson(citizens, writer);
         } catch (IOException e) {
@@ -56,15 +56,11 @@ public class CitizensSystem {
         }
     }
 
-    public static List<Citizen> getCitizens() {
+    public List<Citizen> getCitizens() {
         return citizens;
     }
 
-    public static boolean idExists(int id) {
-        return citizens.stream().anyMatch(c -> c.getId() == id);
-    }
-
-    public static Citizen getCitizenById(int id) {
+    public Citizen getCitizenById(int id) {
         loadCitizensFromJson(); // Load the latest data from JSON
         Citizen citizen = citizens.stream().filter(c -> c.getId() == id).findFirst().orElse(null);
         if (citizen != null) {
@@ -75,8 +71,22 @@ public class CitizensSystem {
         return citizen;
     }
 
+    public void showAllCitizens() {
+        loadCitizensFromJson(); // Load the latest data from JSON
+        for (Citizen citizen : citizens) {
+            System.out.println(citizen);
+        }
+    }
 
-    public static int getNumberOfCitizens() {
-        return citizens.size();
+    public void removeCitizenById(int idCitizen) {
+        loadCitizensFromJson(); // Load the latest data from JSON
+        Citizen citizen = citizens.stream().filter(c -> c.getId() == idCitizen).findFirst().orElse(null);
+        if (citizen != null) {
+            citizens.remove(citizen);
+            saveCitizensToJson();
+            System.out.println("Citizen removed successfully: " + citizen.getFirstName() + " " + citizen.getLastName());
+        } else {
+            System.out.println("Citizen not found.");
+        }
     }
 }
